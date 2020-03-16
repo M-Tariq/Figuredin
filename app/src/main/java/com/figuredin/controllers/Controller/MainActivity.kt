@@ -1,7 +1,8 @@
-package com.figuredin.controllers
+package com.figuredin.controllers.Controller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.figuredin.controllers.R
 
 class MainActivity : AppCompatActivity() {
 

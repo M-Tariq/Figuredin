@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@drawable/back_design"
     android:layout_width="match_parent"
     android:layout_gravity="center"
     android:gravity="center"
     android:layout_height="match_parent"
-    tools:context=".SignupActivity">
+    tools:context=".Controller.SignupActivity">
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -24,19 +25,19 @@
         />
 
     <EditText
-        android:id="@+id/edt_email_signup_id"
+        android:id="@+id/email_signup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
+        android:layout_height="61dp"
         android:layout_margin="10dp"
-        android:padding="15dp"
         android:background="@drawable/edt_design"
         android:drawableLeft="@drawable/person"
         android:drawablePadding="10dp"
         android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="15dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textColorHighlight="@color/white"/>
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/white" />
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +45,7 @@
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/white">
         <EditText
-            android:id="@+id/edt_password_signup_id"
+            android:id="@+id/password_signup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -60,7 +61,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btn_register_signupActivity"
+        android:id="@+id/btn_signup_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Register"
@@ -75,7 +76,7 @@
        />
 
     <Button
-        android:id="@+id/btn_login_signupActivity"
+        android:id="@+id/btn_signin_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign In"

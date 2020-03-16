@@ -5,10 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="8dp"
+android:padding="8dp"
+    android:gravity="center"
     android:background="@drawable/back_design"
-    android:padding="16dp"
-    tools:context=".SigninActivity">
+
+    style="@style/Theme.AppCompat.DayNight.NoActionBar"
+    tools:context=".Controller.SigninActivity">
+
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="200dp"
             android:layout_height="200dp"
@@ -24,7 +28,7 @@
             />
 
         <EditText
-            android:id="@+id/edt_email_login_id"
+            android:id="@+id/email_sigin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -33,6 +37,7 @@
             android:drawableLeft="@drawable/person"
             android:drawablePadding="10dp"
             android:hint="Email"
+            android:maxLines="1"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textColorHighlight="@color/white"/>
@@ -45,7 +50,7 @@
             app:passwordToggleTint="#FFF"
             >
                 <EditText
-                    android:id="@+id/edt_password_login_id"
+                    android:id="@+id/password_sigin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -55,6 +60,7 @@
                     android:drawablePadding="10dp"
                     android:inputType="textPassword"
                     android:hint="Password"
+                    android:maxLines="1"
                     android:textColor="@color/white"
                     />
         </com.google.android.material.textfield.TextInputLayout>
@@ -97,10 +103,10 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_sigin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Log In"
+            android:text="Sign In"
             android:shadowColor="@android:color/transparent"
             android:padding="15dp"
             android:layout_marginRight="10dp"
@@ -125,4 +131,5 @@
             android:background="@drawable/buttonn_design"
             android:textColor="@color/white"
             />
+
 </LinearLayout>
