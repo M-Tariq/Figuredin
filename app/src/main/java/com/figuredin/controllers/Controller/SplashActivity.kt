@@ -24,9 +24,9 @@ class SplashActivity : AppCompatActivity() {
             }else{
                 startActivity(Intent(this, VerifyEmailActivity::class.java))
             }
-            startActivity(Intent(this, SigninActivity::class.java))
-        }
 
+        }
+        startActivity(Intent(this, SigninActivity::class.java))
     }
 
 }

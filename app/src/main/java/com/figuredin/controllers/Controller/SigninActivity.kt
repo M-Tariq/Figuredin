@@ -19,8 +19,6 @@ class SigninActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin)
 
-     
-
         val mAuth=FirebaseAuth.getInstance();
 
         if (supportActionBar != null)
@@ -32,24 +30,17 @@ class SigninActivity : AppCompatActivity() {
             if (!email.isEmpty() && !password.isEmpty())
             mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){task ->
                 if(task.isSuccessful){
-
-                    Toast.makeText(this, "Sign in successfull", Toast.LENGTH_LONG).show()
-
                     val user=mAuth.currentUser
-                    mAuth.addAuthStateListener {
-                        firebaseAuth ->
                         if(user!=null){
                             val user1= mAuth.currentUser?.reload()
                             if(user.isEmailVerified){
+                                Toast.makeText(this, "Sign in successfull", Toast.LENGTH_LONG).show()
                                 startActivity(Intent(this, MainActivity::class.java))
                             }
                             else{
-                                startActivity(Intent(this, VerifyEmailActivity::class.java))
+                                Toast.makeText(this, "Email not verified", Toast.LENGTH_LONG).show()
                             }
                         }
-                    }
-
-
 
                 }else{
                 Toast.makeText(this, "Authentication failed: \n"+task.exception, Toast.LENGTH_LONG).show()
@@ -68,7 +59,6 @@ class SigninActivity : AppCompatActivity() {
        if(remember_me.isChecked){
            //shared pref code
        }
-
     }
 
     override fun onStart() {

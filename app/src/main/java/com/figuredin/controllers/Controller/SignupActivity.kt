@@ -27,18 +27,20 @@ class SignupActivity : AppCompatActivity() {
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {task ->
                 if(task.isSuccessful){
                     Toast.makeText(this, "User created successfully. Verify email First", Toast.LENGTH_LONG).show()
-                    startActivity(Intent(this, VerifyEmailActivity::class.java))
+
                     val user=mAuth.currentUser
                     if (user != null) {
                         user.sendEmailVerification()
+                        Toast.makeText(this,"Verify email", Toast.LENGTH_LONG).show()
+                        startActivity(Intent(this, SigninActivity::class.java))
+                        mAuth.signOut()
                     }
-
                 }else{
 
                     Toast.makeText(this, "Failed:"+task.exception, Toast.LENGTH_LONG).show()
                 }
             }
-            Toast.makeText(this, ""+email+"\n"+password, Toast.LENGTH_LONG).show()
+            //Toast.makeText(this, ""+email+"\n"+password, Toast.LENGTH_LONG).show()
         }
     }
 }
