@@ -14,10 +14,10 @@ android:padding="8dp"
 
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="198dp"
+            android:layout_height="208dp"
             android:layout_gravity="center"
-            android:src="@drawable/figuredin"/>
+            android:src="@drawable/figuredin" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

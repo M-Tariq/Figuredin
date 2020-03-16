@@ -5,28 +5,26 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.figuredin.controllers.R
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_verify_email.*
 
-class SplashActivity : AppCompatActivity() {
+class VerifyEmailActivity : AppCompatActivity() {
+    val mAuth= FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-
-        Thread{
-            Thread.sleep(3000)
-        }.start()
-        val mAuth=FirebaseAuth.getInstance()
+        setContentView(R.layout.activity_verify_email)
         val user=mAuth.currentUser
-
         if (user != null) {
-            if (user.isEmailVerified){
-                startActivity(Intent(this, MainActivity::class.java))
-            }else{
-                startActivity(Intent(this, VerifyEmailActivity::class.java))
+        btn_resend_verify.setOnClickListener {
+
+            if (user!=null){
+                user.sendEmailVerification()
             }
-            startActivity(Intent(this, SigninActivity::class.java))
         }
-
+            if(user.isEmailVerified){
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
+        }
     }
-
 }
