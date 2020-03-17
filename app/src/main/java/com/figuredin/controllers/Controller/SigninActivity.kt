@@ -2,6 +2,7 @@ package com.figuredin.controllers.Controller
 
 import android.app.ProgressDialog
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -27,25 +28,31 @@ class SigninActivity : AppCompatActivity() {
         btn_sigin.setOnClickListener {
             val email:String=email_sigin.text.toString().trim();
             val password:String=password_sigin.text.toString();
-            if (!email.isEmpty() && !password.isEmpty())
-            mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this){task ->
-                if(task.isSuccessful){
-                    val user=mAuth.currentUser
-                        if(user!=null){
-                            val user1= mAuth.currentUser?.reload()
-                            if(user.isEmailVerified){
-                                Toast.makeText(this, "Sign in successfull", Toast.LENGTH_LONG).show()
-                                startActivity(Intent(this, MainActivity::class.java))
-                            }
-                            else{
-                                Toast.makeText(this, "Email not verified", Toast.LENGTH_LONG).show()
-                            }
+            if (!email.isEmpty() && !password.isEmpty() && isEmailValid(email)){
+            mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = mAuth.currentUser
+                    if (user != null) {
+                        val user1 = mAuth.currentUser?.reload()
+                        if (user.isEmailVerified) {
+                            Toast.makeText(this, "Sign in successfull", Toast.LENGTH_LONG).show()
+                            startActivity(Intent(this, MainActivity::class.java))
+                        } else {
+                            Toast.makeText(this, "Email not verified", Toast.LENGTH_LONG).show()
                         }
+                    }
 
-                }else{
-                Toast.makeText(this, "Authentication failed: \n"+task.exception, Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Authentication failed: \n" + task.exception,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
             }
-        }
+        }else{
+                Toast.makeText(this, "Email or password is empty or badly formatted", Toast.LENGTH_LONG).show()
+            }
         }
 
         btn_signup.setOnClickListener {
@@ -58,6 +65,13 @@ class SigninActivity : AppCompatActivity() {
 
        if(remember_me.isChecked){
            //shared pref code
+           //shared pref code
+           /*var sharedpref=getSharedPreferences(PREF_NAME, PRIVATE_MODE)
+           val editor:SharedPreferences.Editor =  sharedpref.edit()
+           editor.putString("email", email)
+           editor.putString("password",password)
+           editor.apply()
+           editor.commit()*/
        }
     }
 
@@ -70,5 +84,8 @@ class SigninActivity : AppCompatActivity() {
         } else{
             Toast.makeText(this, "Sigin first", Toast.LENGTH_LONG).show();
         }
+    }
+    fun isEmailValid(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }

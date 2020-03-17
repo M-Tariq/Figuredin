@@ -24,23 +24,34 @@ class SignupActivity : AppCompatActivity() {
         btn_signup_signup.setOnClickListener(){
             val email:String=email_signup.text.toString().trim();
             val password:String=password_signup.text.toString();
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {task ->
-                if(task.isSuccessful){
-                    Toast.makeText(this, "User created successfully. Verify email First", Toast.LENGTH_LONG).show()
+            if (!email.isEmpty() && !password.isEmpty() && isEmailValid(email)) {
+                mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(
+                                this,
+                                "User created successfully. Verify email First",
+                                Toast.LENGTH_LONG
+                            ).show()
 
-                    val user=mAuth.currentUser
-                    if (user != null) {
-                        user.sendEmailVerification()
-                        Toast.makeText(this,"Verify email", Toast.LENGTH_LONG).show()
-                        startActivity(Intent(this, SigninActivity::class.java))
-                        mAuth.signOut()
+                            val user = mAuth.currentUser
+                            if (user != null) {
+                                user.sendEmailVerification()
+                                Toast.makeText(this, "Verify email", Toast.LENGTH_LONG).show()
+                                startActivity(Intent(this, SigninActivity::class.java))
+                                mAuth.signOut()
+                            }
+                        } else {
+                            Toast.makeText(this, "Failed:" + task.exception, Toast.LENGTH_LONG)
+                                .show()
+                        }
                     }
-                }else{
-
-                    Toast.makeText(this, "Failed:"+task.exception, Toast.LENGTH_LONG).show()
-                }
+            }else{
+                Toast.makeText(this, "Email or password is empty or badly formatted", Toast.LENGTH_LONG).show()
             }
-            //Toast.makeText(this, ""+email+"\n"+password, Toast.LENGTH_LONG).show()
         }
+    }
+    fun isEmailValid(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }
