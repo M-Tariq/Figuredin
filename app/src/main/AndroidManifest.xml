@@ -13,7 +13,9 @@
         <activity
             android:name=".Controller.ui.Note"
             android:label="@string/title_activity_note"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
         <activity
             android:name=".Controller.ForgotPasswordActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
@@ -33,11 +35,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Controller.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

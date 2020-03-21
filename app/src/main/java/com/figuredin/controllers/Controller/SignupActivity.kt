@@ -5,9 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.figuredin.controllers.Controller.other.Constant
 import com.figuredin.controllers.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_signup.*
 
 class SignupActivity : AppCompatActivity() {
@@ -28,6 +31,7 @@ class SignupActivity : AppCompatActivity() {
                 mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
+
                             Toast.makeText(
                                 this,
                                 "User created successfully. Verify email First",
@@ -36,6 +40,7 @@ class SignupActivity : AppCompatActivity() {
 
                             val user = mAuth.currentUser
                             if (user != null) {
+                                storeInDb(user.uid, email)
                                 user.sendEmailVerification()
                                 Toast.makeText(this, "Verify email", Toast.LENGTH_LONG).show()
                                 startActivity(Intent(this, SigninActivity::class.java))
@@ -51,6 +56,17 @@ class SignupActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun storeInDb(uid: String, email: String) {
+        val firestoreDb = FirebaseFirestore.getInstance()
+        val userRef = firestoreDb.collection(Constant.USER_COLLECTION).document(uid)
+        val map = HashMap<String, Any>()
+        map.put("email", email)
+        map.put("createdAt", FieldValue.serverTimestamp())
+        userRef.set(map)
+
+    }
+
     fun isEmailValid(email: String): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }

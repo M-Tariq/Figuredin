@@ -4,9 +4,11 @@ import android.app.ProgressDialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.figuredin.controllers.Controller.ui.Note
 import com.figuredin.controllers.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_signin.*
@@ -15,6 +17,7 @@ import kotlinx.android.synthetic.main.activity_signin.*
 class SigninActivity : AppCompatActivity() {
 
     val mAuth=FirebaseAuth.getInstance()
+    val TAG = SigninActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,14 +38,19 @@ class SigninActivity : AppCompatActivity() {
                     if (user != null) {
                         val user1 = mAuth.currentUser?.reload()
                         if (user.isEmailVerified) {
+                            Log.d(TAG, "email verified")
                             Toast.makeText(this, "Sign in successfull", Toast.LENGTH_LONG).show()
-                            startActivity(Intent(this, MainActivity::class.java))
+                            startActivity(Intent(this, Note::class.java))
                         } else {
+                            Log.d(TAG, "email not verified")
                             Toast.makeText(this, "Email not verified", Toast.LENGTH_LONG).show()
                         }
+                    }else{
+                        Log.d(TAG, "Login user null")
                     }
 
                 } else {
+                    Log.d(TAG, "Login fail ${task.exception}")
                     Toast.makeText(
                         this,
                         "Authentication failed: \n" + task.exception,
@@ -51,6 +59,7 @@ class SigninActivity : AppCompatActivity() {
                 }
             }
         }else{
+                Log.d(TAG, "Email or password is empty or badly formatted")
                 Toast.makeText(this, "Email or password is empty or badly formatted", Toast.LENGTH_LONG).show()
             }
         }
@@ -80,7 +89,7 @@ class SigninActivity : AppCompatActivity() {
         val user=mAuth.currentUser
         if(user!==null){
             Toast.makeText(this, "Already sign in", Toast.LENGTH_LONG).show()
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, Note::class.java))
         } else{
             Toast.makeText(this, "Sigin first", Toast.LENGTH_LONG).show();
         }

@@ -1,12 +1,14 @@
 package com.figuredin.controllers.Controller.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.figuredin.controllers.Controller.Model.NoteModel
 import com.figuredin.controllers.Controller.other.NetworkStateResource
 import com.figuredin.controllers.R
@@ -45,15 +47,20 @@ class NewNoteFragment : Fragment() {
         viewModel.observerNoteRequest().observe(viewLifecycleOwner, Observer {
             when(it?.status){
                 NetworkStateResource.Status.ERROR->{
+                    Log.d(TAG, "Error : ${it.message}")
 
                 }
 
                 NetworkStateResource.Status.LOADING->{
+                    Log.d(TAG, "Saving...")
 
                 }
 
                 NetworkStateResource.Status.SUCCESS->{
-
+                    Log.d(TAG, "Saved")
+                    view.et_title.setText("")
+                    view.et_desc.setText("")
+                    findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
                 }
             }
 
