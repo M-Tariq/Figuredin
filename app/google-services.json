@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "17062268014",
+    "firebase_url": "https://figuredin-ec82c.firebaseio.com",
+    "project_id": "figuredin-ec82c",
+    "storage_bucket": "figuredin-ec82c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:17062268014:android:9b622f81af85ada804ea7f",
+        "android_client_info": {
+          "package_name": "com.figuredin.controllers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "17062268014-vil4nr172ntv0t3vjppt64qq22s5ngte.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.figuredin.controllers",
+            "certificate_hash": "bca7f5e451e98d1202c8c77fbb87e24fe510156b"
+          }
+        },
+        {
+          "client_id": "17062268014-0dasj0p4bo4k961imjn1udlp7uk4ecjj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDVzNRLSbxjjzb-D8w7X0Hg5CZjH4seg8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "17062268014-0dasj0p4bo4k961imjn1udlp7uk4ecjj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
