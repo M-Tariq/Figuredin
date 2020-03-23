@@ -10,6 +10,6 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="220dp"
         android:layout_height="220dp"
-        android:src="@drawable/figuredin"/>
+        android:src="@drawable/fig"/>
 
 </LinearLayout>

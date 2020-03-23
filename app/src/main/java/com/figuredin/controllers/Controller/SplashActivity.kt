@@ -14,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Thread{
-            Thread.sleep(3000)
+            Thread.sleep(6000)
         }.start()
         val mAuth=FirebaseAuth.getInstance()
         val user=mAuth.currentUser
