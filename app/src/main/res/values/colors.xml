@@ -8,5 +8,6 @@
 
     <color name="puprple">#70410b</color>
     <color name="blue">#0715df</color>
+    <color name="black">#000</color>
 
 </resources>

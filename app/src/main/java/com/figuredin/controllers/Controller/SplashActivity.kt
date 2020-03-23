@@ -3,8 +3,9 @@ package com.figuredin.controllers.Controller
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.figuredin.controllers.Controller.ui.Note
+import com.figuredin.controllers.ui.notes.NoteActivity
 import com.figuredin.controllers.R
+import com.figuredin.controllers.ui.auth.SigninActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
 
         if (user != null) {
             if (user.isEmailVerified){
-                startActivity(Intent(this, Note::class.java))
+                startActivity(Intent(this, NoteActivity::class.java))
             }else{
                 startActivity(Intent(this, SigninActivity::class.java))
             }

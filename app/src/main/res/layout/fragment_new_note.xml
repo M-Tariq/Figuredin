@@ -1,48 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controller.ui.NewNoteFragment"
-    android:orientation="vertical">
+    tools:context=".ui.notes.NewNoteFragment"
+    android:orientation="vertical"
+    android:padding="@dimen/eight_dp">
 
-    <LinearLayout
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/fab_margin"
-        android:orientation="vertical">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/et_title"
-            android:inputType="textPersonName"
-            android:hint="Note Title"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/et_desc"
-            android:inputType="textMultiLine"
-            android:hint="Description"/>
+        android:id="@+id/et_title"
+        android:inputType="textPersonName"
+        android:gravity="top"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:background="@null"
+        android:hint="Note Title"/>
 
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:text="submit"
-            android:id="@+id/btn_submit"
-            android:layout_marginTop="@dimen/fab_margin"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/et_desc"
+        android:inputType="textMultiLine"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/eight_dp"
+        android:background="@null"
+        android:hint="@string/type_your_note"/>
 
 
-
-
-    </LinearLayout>
-
-
-
-
-</ScrollView>
+</LinearLayout>

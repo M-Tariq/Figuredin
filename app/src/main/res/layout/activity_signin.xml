@@ -9,7 +9,7 @@ android:padding="8dp"
     android:gravity="center"
     android:background="@drawable/back_design"
     style="@style/Theme.AppCompat.DayNight.NoActionBar"
-    tools:context=".Controller.SigninActivity">
+    tools:context=".ui.auth.SigninActivity">
 
         <ScrollView android:layout_marginTop="30dp"
             android:layout_width="fill_parent"

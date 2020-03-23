@@ -1,4 +1,4 @@
-package com.figuredin.controllers.Controller
+package com.figuredin.controllers.ui.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

@@ -1,4 +1,4 @@
-package com.figuredin.controllers.Controller.ui
+package com.figuredin.controllers.ui.notes
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -17,11 +17,12 @@ class NoteViewModel : ViewModel(){
     private val myNotesStatus = MediatorLiveData<NetworkStateResource<MutableList<NoteModel>?>>()
 
 
-    fun saveInDb(userId : String, note: NoteModel){
+    fun saveInDb(note: NoteModel){
         saveRequestStatus.value = NetworkStateResource.loading()
 
-        noteRepository.addNote(userId, note).addOnSuccessListener {
+        noteRepository.addNote(note).addOnSuccessListener {
             saveRequestStatus.value = NetworkStateResource.success("Success", it.id)
+            noteRepository.updateNoteId(it.id)
         }.addOnFailureListener {
             saveRequestStatus.value = NetworkStateResource.error(it.message)
         }

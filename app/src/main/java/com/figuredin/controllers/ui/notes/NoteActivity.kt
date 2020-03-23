@@ -1,14 +1,13 @@
-package com.figuredin.controllers.Controller.ui
+package com.figuredin.controllers.ui.notes
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.figuredin.controllers.R
 
 import kotlinx.android.synthetic.main.activity_note.*
 
-class Note : AppCompatActivity() {
+class NoteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
